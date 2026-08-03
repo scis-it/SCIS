@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Corner | SCIS</title>
+    
+    <!-- Google Fonts for a modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #800020; /* Deep Burgundy */
+            --hover-color: #A32638; /* Lighter Crimson/Burgundy */
+            --text-dark: #2d3748;
+            --text-light: #ffffff;
+            --bg-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.75) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            /* REPLACE THE URL BELOW WITH YOUR BACKGROUND IMAGE */
+            background-image: url('/home/was/Downloads/IMG_9414.JPG');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Dark overlay with a slight blur for depth */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-up {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        /* Header & Logo Section */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .logo-container {
+            background: #ffffff;
+            padding: 15px 35px;
+            border-radius: 50px; /* Pill shape for a modern feel */
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .custom-logo {
+    max-width: 200px; /* Change this number to make the logo wider or narrower */
+    height: auto;     /* Keeps the proportions perfect */
+    display: block;   /* Centers it neatly */
+}
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            font-size: 1.15rem;
+            font-weight: 300;
+            opacity: 0.9;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+            max-width: 600px;
+        }
+
+        /* Category Sections */
+        .category {
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 0.5px;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        /* Premium Glassmorphism Cards */
+        .card {
+            background: var(--bg-gradient);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 1);
+            border-radius: 16px;
+            padding: 25px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Card Hover Effects */
+        .card:hover {
+            transform: translateY(-8px);
+            background: #ffffff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-color: var(--hover-color);
+        }
+
+        /* Styled Icon Badges */
+        .card-icon {
+            font-size: 1.8rem;
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(128, 0, 32, 0.1); /* Subtle burgundy background */
+            border-radius: 50%; /* Perfect circle */
+            margin-right: 20px;
+            flex-shrink: 0;
+            border: 1px solid rgba(128, 0, 32, 0.15);
+            box-shadow: inset 0 2px 5px rgba(255,255,255,0.8);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover .card-icon {
+            background: var(--primary-color);
+            transform: scale(1.1) rotate(5deg);
+            border-color: var(--primary-color);
+        }
+
+        /* The emoji itself inside the badge */
+        .card:hover .card-icon {
+            /* This ensures the emoji looks good even when the background turns solid burgundy */
+            filter: brightness(1.2) drop-shadow(0 2px 2px rgba(0,0,0,0.2)); 
+        }
+
+        .card-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        
+        .card:hover .card-content h3 {
+            color: var(--hover-color);
+        }
+
+        .card-content p {
+            font-size: 0.9rem;
+            color: #4a5568;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .grid { grid-template-columns: 1fr; }
+            .container { padding: 30px 15px; }
+            .card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="animate-up delay-1">
+            <div class="logo-container">
+                <!-- REPLACE THE TEXT BELOW WITH YOUR <img> TAG -->
+                <img src="https://ik.imagekit.io/a3xicngi0/School_emblem%20jpeg%20-01.jpg" alt="Organization Logo" class="custom-logo">
+            </div>
+            <h1>Staff Corner</h1>
+            <p class="subtitle">Quick access to all essential organization tools and resources</p>
+        </header>
+
+        <main>
+            <!-- Category 1 -->
+            <section class="category animate-up delay-2">
+                <h2 class="category-title">IT & Support</h2>
+                <div class="grid">
+                    <a href="https://scsinternational.on.spiceworks.com/portal/registrations" class="card">
+                        <div class="card-icon">🎫</div>
+                        <div class="card-content">
+                            <h3>Ticketing System</h3>
+                            <p>Report any IT issues</p>
+                        </div>
+                    </a>
+                    <a href="https://form.jotform.com/220322031843542" class="card">
+                        <div class="card-icon">🔊</div>
+                        <div class="card-content">
+                            <h3>Book any I.T Equipment</h3>
+                            <p>Self-service portal for booking any I.T equipment for your upcoming event</p>
+                        </div>
+                    </a>
+
+                    <a href="https://drive.google.com/file/d/1EQV0h6-se1d2YUpIGzSlyb7AOdwg2EdO/view?usp=drive_link" class="card">
+                        <div class="card-icon">📽️ </div>
+                        <div class="card-content">
+                            <h3>Tutorial</h3>
+                            <p>How to create an I.T ticket</p>
+                        </div>
+                    </a>
+
+
+                    <a href="https://scsinternational.sc.ke/Signatures/all_signatures.html" class="card">
+                        <div class="card-icon">📧 </div>
+                        <div class="card-content">
+                            <h3>Email Signatures</h3>
+                            <p>Acess to your email signature</p>
+                        </div>
+                    </a>
+
+                    
+                    <a href="https://scsinternational.sc.ke/Signatures/all_signatures.html" class="card">
+                        <div class="card-icon">📽️ </div>
+                        <div class="card-content">
+                            <h3>Tutorial</h3>
+                            <p>How to implement your email signature</p>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <!-- Category 2 -->
+            <section class="category animate-up delay-3">
+                <h2 class="category-title">iSAMS</h2>
+                <div class="grid">
+                    <a href="#" class="card">
+                        <div class="card-icon">🏫</div>
+                        <div class="card-content">
+                            <h3>iSAMS Portal</h3>
+                            <p>Access to the School Management System</p>
+                        </div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="card-icon">📊</div>
+                        <div class="card-content">
+                            <h3>Analytics Dashboard</h3>
+                            <p>Company performance and real-time KPI metrics</p>
+                        </div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="card-icon">📁</div>
+                        <div class="card-content">
+                            <h3>Shared Drive</h3>
+                            <p>Access organization-wide documents and templates</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Category 3 -->
+            <section class="category animate-up delay-4">
+                <h2 class="category-title">HR & Onboarding</h2>
+                <div class="grid">
+                    <a href="http://192.168.20.248:3000" class="card">
+                        <div class="card-icon">🤖</div>
+                        <div class="card-content">
+                            <h3>Semper Bot</h3>
+                            <p>AI Policy assistant</p>
+                        </div>
+                    </a>
+
+
+                    <a href="https://www.myeducare.com/login/index.php" class="card">
+                        <div class="card-icon">📖 </div>
+                        <div class="card-content">
+                            <h3>Educare</h3>
+                            <p>Acess to your Educare account</p>
+                        </div>
+                    </a>
+                    <a href="#" class="card">
+                        <div class="card-icon">🌴</div>
+                        <div class="card-content">
+                            <h3>Leave Management</h3>
+                            <p>Request PTO, sick leave, and view upcoming holidays</p>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/drive/u/2/folders/1GwgpkuZAquw-1661ZgIEiE6I4l9SlRft" class="card">
+                        <div class="card-icon">📘</div>
+                        <div class="card-content">
+                            <h3>Employee Handbook</h3>
+                            <p>Browse company policies and benefits information</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="animate-up delay-4">
+            <p>&copy; 2026 St Christopher's International School. For internal use only.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
