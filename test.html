@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Corner | SCIS</title>
-    
+
     <!-- Google Fonts for a modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary-color: #800020; /* Deep Burgundy */
@@ -26,28 +26,67 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* ALTERNATING BACKGROUND ANIMATION */
-        @keyframes changeBackground {
-            0%, 45% {
-                background-image: url('https://ik.imagekit.io/a3xicngi0/SCIS-cover.png');
-            }
-            50%, 95% {
-                background-image: url('https://ik.imagekit.io/a3xicngi0/DJI_20260115065737_0004_D.JPG');
-            }
-            100% {
-                background-image: url('https://ik.imagekit.io/a3xicngi0/SCIS-cover.png');
-            }
-        }
-
         body {
-            animation: changeBackground 60s infinite alternate;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             min-height: 100vh;
             color: var(--text-dark);
             overflow-x: hidden;
-            background-color: var(--primary-color); 
+            background-color: var(--primary-color);
+        }
+
+        /* -------------------------------------------
+           NEW SMOOTH BACKGROUND SLIDESHOW
+        ---------------------------------------------*/
+        .background-slider {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2; /* Keeps it behind everything */
+            background-color: var(--primary-color);
+        }
+
+        .background-slider .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation-duration: 60s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        /* Assigning the 5 unique images */
+        .slide-1 { background-image: url('https://ik.imagekit.io/a3xicngi0/SCIS-cover.png'); animation-name: fade1; }
+        .slide-2 { background-image: url('https://ik.imagekit.io/a3xicngi0/DJI_20260115065737_0004_D.JPG'); animation-name: fade2; }
+        .slide-3 { background-image: url('https://ik.imagekit.io/a3xicngi0/DOL_4450.jpg'); animation-name: fade3; }
+        .slide-4 { background-image: url('https://ik.imagekit.io/a3xicngi0/DOL_4461.jpg'); animation-name: fade4; }
+        .slide-5 { background-image: url('https://ik.imagekit.io/a3xicngi0/DOL_4463.jpg'); animation-name: fade5; }
+
+        /* The math for perfect overlapping crossfades */
+        @keyframes fade1 { 
+            0%, 15%, 100% { opacity: 1; } 
+            20%, 95% { opacity: 0; } 
+        }
+        @keyframes fade2 { 
+            0%, 15%, 40%, 100% { opacity: 0; } 
+            20%, 35% { opacity: 1; } 
+        }
+        @keyframes fade3 { 
+            0%, 35%, 60%, 100% { opacity: 0; } 
+            40%, 55% { opacity: 1; } 
+        }
+        @keyframes fade4 { 
+            0%, 55%, 80%, 100% { opacity: 0; } 
+            60%, 75% { opacity: 1; } 
+        }
+        @keyframes fade5 { 
+            0%, 75%, 100% { opacity: 0; } 
+            80%, 95% { opacity: 1; } 
         }
 
         /* Dark overlay with a slight blur for depth */
@@ -84,7 +123,7 @@
             animation: fadeInUp 0.8s ease forwards;
             opacity: 0;
         }
-        
+
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
@@ -170,7 +209,7 @@
             color: var(--text-dark);
             line-height: 1.5;
         }
-        
+
         .notif-body strong {
             color: var(--primary-color);
             display: block;
@@ -278,7 +317,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 60px; 
+            margin-bottom: 60px;
             text-align: center;
             color: var(--text-light);
             padding-top: 20px;
@@ -287,16 +326,16 @@
         .logo-container {
             background: #ffffff;
             padding: 15px 35px;
-            border-radius: 50px; 
+            border-radius: 50px;
             margin-bottom: 25px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             border: 2px solid rgba(255,255,255,0.5);
         }
 
         .custom-logo {
-            max-width: 200px; 
-            height: auto;     
-            display: block;   
+            max-width: 200px;
+            height: auto;
+            display: block;
         }
 
         h1 {
@@ -371,8 +410,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(128, 0, 32, 0.1); 
-            border-radius: 50%; 
+            background: rgba(128, 0, 32, 0.1);
+            border-radius: 50%;
             margin-right: 20px;
             flex-shrink: 0;
             border: 1px solid rgba(128, 0, 32, 0.15);
@@ -384,7 +423,7 @@
             background: var(--primary-color);
             transform: scale(1.1) rotate(5deg);
             border-color: var(--primary-color);
-            filter: brightness(1.2) drop-shadow(0 2px 2px rgba(0,0,0,0.2)); 
+            filter: brightness(1.2) drop-shadow(0 2px 2px rgba(0,0,0,0.2));
         }
 
         .card-content h3 {
@@ -394,7 +433,7 @@
             color: var(--primary-color);
             transition: color 0.3s ease;
         }
-        
+
         .card:hover .card-content h3 {
             color: var(--hover-color);
         }
@@ -431,6 +470,15 @@
 </head>
 <body>
 
+    <!-- NEW SLIDESHOW CONTAINER -->
+    <div class="background-slider">
+        <div class="slide slide-1"></div>
+        <div class="slide slide-2"></div>
+        <div class="slide slide-3"></div>
+        <div class="slide slide-4"></div>
+        <div class="slide slide-5"></div>
+    </div>
+
     <div class="overlay"></div>
 
     <!-- 1. FLOATING NOTIFICATION TOP RIGHT -->
@@ -448,12 +496,10 @@
                  Learning@Scs
             </div>
 
-
             <div class="notif-body">
                 <strong>Staff wifi password</strong>
                  onetotenasaword!
             </div>
-
 
             <div class="notif-body">
                 <strong> Guest wifi password</strong>
@@ -500,7 +546,6 @@
                         </div>
                     </a>
 
-
                     <a href="https://drive.google.com/drive/folders/1yEudodEx8lVlc6q_V3MpWQxP5A3HOfL3" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">🔖</div>
                         <div class="card-content">
@@ -509,7 +554,6 @@
                         </div>
                     </a>
 
-
                     <a href="https://drive.google.com/drive/u/1/folders/1gPfuLzvN5l7n6-gB4y4exZGhTycoAfeP" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">🧮</div>
                         <div class="card-content">
@@ -517,7 +561,6 @@
                             <p>A collection of useful resources for the mathematics department</p>
                         </div>
                     </a>
-
 
                     <a href="https://drive.google.com/drive/folders/14xmA61VcabyW0CU4_8uh9vaDXhNEsrBU?usp=sharing" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">📑</div>
@@ -541,7 +584,6 @@
                         </div>
                     </a>
 
-
                     <a href="https://drive.google.com/drive/folders/1jFJix_SufKhEXdG0jjPV03w6M3iyINK2?usp=sharing" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">📜</div>
                         <div class="card-content">
@@ -549,13 +591,13 @@
                             <p>User manual</p>
                         </div>
                     </a>
-
-
+                </div>
             </section>
+            
             <!-- Category: Admin & Operations -->
             <section class="category animate-up delay-2">
                 <h2 class="category-title">Admin & Operations</h2>
-                <div class="grid">  
+                <div class="grid">
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRKxrwwpX2aiNXP3fzTZGjms3SoRT8uIkBKEftpeexKkGzTQ/viewform" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">🚘</div>
                         <div class="card-content">
@@ -563,7 +605,6 @@
                             <p>Get your car sticker ahead of time</p>
                         </div>
                     </a>
-
 
                     <a href="https://app.classlist.com/login/#/?unauthorized=school" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">📋</div>
@@ -573,7 +614,6 @@
                         </div>
                     </a>
 
-
                     <a href="https://www.testwise.com/login" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">🎒</div>
                         <div class="card-content">
@@ -581,7 +621,6 @@
                             <p>Testwise</p>
                         </div>
                     </a>
-
 
                     <a href="https://drive.google.com/drive/folders/1cmvKOGXKNI6sezkmi1ZMt7jGzY_f4x0x?usp=sharing" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">🗓️</div>
@@ -591,7 +630,6 @@
                         </div>
                     </a>
 
-
                     <a href="https://scsinternational.sc.ke/" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">🌐</div>
                         <div class="card-content">
@@ -599,24 +637,19 @@
                         </div>
                     </a>
 
-
                     <a href="https://app.essenceautomations.com/?url=%252Fv2%252Flocation%252FEihPVBB4GvwaFv9NyjQU%252Fcalendars%252Fappointments" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">👣</div>
                         <div class="card-content">
                             <h3>SCIS School Tours</h3>
                         </div>
                     </a>
-
-
                 </div>
             </section>
-            
+
             <!-- Category: IT & Support -->
             <section class="category animate-up delay-3">
                 <h2 class="category-title">IT & Support</h2>
-                
                 <div class="grid">
-
                     <a href="https://scsinternational.on.spiceworks.com/portal/registrations" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">🎫</div>
                         <div class="card-content">
@@ -624,6 +657,7 @@
                             <p>Report any IT issues</p>
                         </div>
                     </a>
+                    
                     <a href="https://form.jotform.com/220322031843542" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">🔊</div>
                         <div class="card-content">
@@ -647,7 +681,7 @@
                             <p>Access to your email signature</p>
                         </div>
                     </a>
-                    
+
                     <a href="https://drive.google.com/file/d/1CkFMkv73euj0PA5Od31AYjt6FutG1_OT/view" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">📽️ </div>
                         <div class="card-content">
@@ -677,7 +711,7 @@
                             <p>Access to your Educare account</p>
                         </div>
                     </a>
-                    
+
                     <a href="#" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">🌴</div>
                         <div class="card-content">
@@ -685,7 +719,7 @@
                             <p>Coming soon</p>
                         </div>
                     </a>
-                    
+
                     <a href="https://drive.google.com/drive/u/2/folders/1GwgpkuZAquw-1661ZgIEiE6I4l9SlRft" class="card" target="_blank" rel="noopener noreferrer">
                         <div class="card-icon">📘</div>
                         <div class="card-content">
@@ -712,7 +746,7 @@
         notifBtn.addEventListener('click', function(event) {
             event.stopPropagation(); // Prevents instant closing
             notifPanel.classList.toggle('active');
-            
+
             // Mark as read by hiding the red dot
             if(notifBadge.style.display !== 'none') {
                 notifBadge.style.display = 'none';
@@ -725,7 +759,6 @@
                 notifPanel.classList.remove('active');
             }
         });
-
 
         // --- Search Overlay Logic ---
         const fabSearchBtn = document.getElementById('fabSearchBtn');
@@ -786,7 +819,6 @@
 
         // Run filter on keyup
         searchInput.addEventListener('keyup', filterCards);
-
     </script>
 </body>
 </html>
