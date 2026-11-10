@@ -34,7 +34,7 @@
         }
 
         /* -------------------------------------------
-           SMOOTH 6-IMAGE BACKGROUND SLIDESHOW
+           SMOOTH 7-IMAGE BACKGROUND SLIDESHOW
         ---------------------------------------------*/
         .background-slider {
             position: fixed;
@@ -55,43 +55,48 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            animation-duration: 72s; /* Increased to 72s to give each of the 6 photos 12 seconds */
+            animation-duration: 84s; /* Increased to 84s for 7 photos (12s each) */
             animation-iteration-count: infinite;
             animation-timing-function: ease-in-out;
         }
 
-        /* Assigning the 6 unique images */
+        /* Assigning the 7 unique images */
         .slide-1 { background-image: url('https://ik.imagekit.io/a3xicngi0/SCIS-cover.png'); animation-name: fade1; }
         .slide-2 { background-image: url('https://ik.imagekit.io/a3xicngi0/DJI_20260115065737_0004_D.JPG'); animation-name: fade2; }
         .slide-3 { background-image: url('https://ik.imagekit.io/a3xicngi0/DOL_4450.jpg'); animation-name: fade3; }
         .slide-4 { background-image: url('https://ik.imagekit.io/a3xicngi0/DOL_4461.jpg'); animation-name: fade4; }
         .slide-5 { background-image: url('https://ik.imagekit.io/a3xicngi0/DOL_4463.jpg'); animation-name: fade5; }
         .slide-6 { background-image: url('https://ik.imagekit.io/a3xicngi0/DOL_4837.jpg?updatedAt=1793881549038'); animation-name: fade6; }
+        .slide-7 { background-image: url('https://ik.imagekit.io/a3xicngi0/DOL_4886.jpg?updatedAt=1794288561720'); animation-name: fade7; }
 
-        /* The recalculated math for 6 perfect overlapping crossfades */
+        /* The recalculated math for 7 perfect overlapping crossfades */
         @keyframes fade1 { 
-            0%, 12%, 100% { opacity: 1; } 
-            16%, 96% { opacity: 0; } 
+            0%, 10%, 100% { opacity: 1; } 
+            14%, 96% { opacity: 0; } 
         }
         @keyframes fade2 { 
-            0%, 12%, 33%, 100% { opacity: 0; } 
-            16%, 29% { opacity: 1; } 
+            0%, 10%, 28%, 100% { opacity: 0; } 
+            14%, 24% { opacity: 1; } 
         }
         @keyframes fade3 { 
-            0%, 29%, 50%, 100% { opacity: 0; } 
-            33%, 45% { opacity: 1; } 
+            0%, 24%, 42%, 100% { opacity: 0; } 
+            28%, 38% { opacity: 1; } 
         }
         @keyframes fade4 { 
-            0%, 45%, 66%, 100% { opacity: 0; } 
-            50%, 62% { opacity: 1; } 
+            0%, 38%, 57%, 100% { opacity: 0; } 
+            42%, 53% { opacity: 1; } 
         }
         @keyframes fade5 { 
-            0%, 62%, 83%, 100% { opacity: 0; } 
-            66%, 79% { opacity: 1; } 
+            0%, 53%, 71%, 100% { opacity: 0; } 
+            57%, 67% { opacity: 1; } 
         }
         @keyframes fade6 { 
-            0%, 79%, 100% { opacity: 0; } 
-            83%, 96% { opacity: 1; } 
+            0%, 67%, 85%, 100% { opacity: 0; } 
+            71%, 81% { opacity: 1; } 
+        }
+        @keyframes fade7 { 
+            0%, 81%, 100% { opacity: 0; } 
+            85%, 96% { opacity: 1; } 
         }
 
         /* Dark overlay with a slight blur for depth */
@@ -482,7 +487,8 @@
         <div class="slide slide-3"></div>
         <div class="slide slide-4"></div>
         <div class="slide slide-5"></div>
-        <div class="slide slide-6"></div> <!-- The New 6th Image -->
+        <div class="slide slide-6"></div>
+        <div class="slide slide-7"></div> <!-- The Updated 7th Image -->
     </div>
 
     <div class="overlay"></div>
